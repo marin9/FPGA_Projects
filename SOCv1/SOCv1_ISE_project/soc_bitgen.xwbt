@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/home/ise/Desktop/SOCv1/soc.ncd
+OUTFILE=/home/ise/Desktop/SOCv1/soc.bit
+FAMILY=Spartan6
+PART=xc6slx9-2tqg144
+WORKINGDIR=/home/ise/Desktop/SOCv1
+LICENSE=WebPack
+USER_INFO=211359973_0_0_213
