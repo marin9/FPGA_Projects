@@ -85,21 +85,36 @@ architecture Behavioral of soc is
 	signal dout_bus: std_logic_vector(7 downto 0);
 	signal ram_out: std_logic_vector(7 downto 0);
 	signal gpio_out: std_logic_vector(7 downto 0);
+	
+	signal cnt: std_logic_vector(3 downto 0);
+	signal en: std_logic;
 begin
 
-	bootloader: spi port map(clk, rst, ss, sck, si, so, wr, rom_addr_in, rom_data_in, s_rst);
+	process(clk) is
+	begin
+		if(rising_edge(clk)) then
+			if(rst='1') then
+				cnt <= (others => '0');
+			else
+				cnt <= cnt + 1;
+			end if;
+		end if;
+	end process;
+	en <= not rst;
 
-	program_memory: rom port map(clk, '1', wr, rom_addr_in, rom_addr_out, rom_data_in, rom_data_out);
+	bootloader: spi port map(cnt(3), rst, ss, sck, si, so, wr, rom_addr_in, rom_data_in, s_rst);
 
-	processor: cpu port map(clk, s_rst, ram_w, rom_addr_out, rom_data_out, addr_bus, din_bus, dout_bus);
+	program_memory: rom port map(cnt(3), en, wr, rom_addr_in, rom_addr_out, rom_data_in, rom_data_out);
+
+	processor: cpu port map(cnt(3), s_rst, ram_w, rom_addr_out, rom_data_out, addr_bus, din_bus, dout_bus);
 	
 	with addr_bus select din_bus <=
 	gpio_out when x"FE",
 	ram_out  when others;
 	
-	data_memory: ram port map(clk, ram_w, addr_bus, dout_bus, ram_out);
+	data_memory: ram port map(cnt(3), ram_w, addr_bus, dout_bus, ram_out);
 	
-	gpio_port: gpio generic map(255) port map(clk, rst, ram_w, addr_bus, dout_bus, gpio_out, input, output);
+	gpio_port: gpio generic map(255) port map(cnt(3), rst, ram_w, addr_bus, dout_bus, gpio_out, input, output);
 	
 end Behavioral;
 

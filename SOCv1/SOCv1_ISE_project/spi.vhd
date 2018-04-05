@@ -31,7 +31,21 @@ architecture Behavioral of spi is
 	signal shift_en: std_logic;
 	
 	signal sck_en: std_logic;
+	
+	signal sh: std_logic_vector(23 downto 0);
+	signal sh_en: std_logic;
 begin
+
+	process(clk, rst, sh) is
+	begin
+		if(rst='1') then
+			sh <= "000000110000000000000000";
+		elsif(falling_edge(clk)) then
+			if(sh_en='1') then
+				sh <= sh(22 downto 0) & sh(23);
+			end if;
+		end if;
+	end process;
 
 	-- clock timer t0
 	process(clk) is
@@ -60,7 +74,7 @@ begin
 	-- data shift register
 	process(clk) is
 	begin
-		if(falling_edge(clk)) then
+		if(rising_edge(clk)) then
 			if(shift_en='1') then
 				shift_reg <= shift_reg(14 downto 0) & so;
 			end if;
@@ -68,12 +82,11 @@ begin
 	end process;
 
 	sck <= clk and sck_en;
-	
 	addr <= timer1;
 	data <= shift_reg;
 
 	-- state machine logic
-	process(trenutno, timer0, timer1) is
+	process(trenutno, timer0, timer1, sh) is
 	begin
 		sljedece <= trenutno;
 		rst_t0 <= '0';
@@ -85,6 +98,7 @@ begin
 		si <= '0';
 		wr <= '0';
 		fin <= '1';
+		sh_en <= '0';
 	
 		case trenutno is
 		when START =>
@@ -94,14 +108,15 @@ begin
 			sljedece <= SS0;
 			
 		when SS0 =>
-			if(timer0="00100") then
+			if(timer0="00011") then
 				rst_t0 <= '1';
 				sljedece <= SEND;
 			end if;
 		
 		when SEND =>
 			sck_en <= '1';
-			si <= request(conv_integer(timer0));
+			sh_en <= '1';
+			si <= sh(23);
 			if(timer0="10111") then
 				rst_t0 <= '1';
 				sljedece <= RECV;
@@ -117,14 +132,12 @@ begin
 		
 		when MEM =>
 			wr <= '1';
-			if(timer0="00000") then
-				rst_t0 <= '1';
-				inc_t1 <= '1';
-				if(timer1=x"FFF") then
-					sljedece <= SS1;
-				else
-					sljedece <= RECV;
-				end if;
+			rst_t0 <= '1';
+			inc_t1 <= '1';
+			if(timer1=x"FFF") then
+				sljedece <= SS1;
+			else
+				sljedece <= RECV;
 			end if;
 		
 		when SS1 =>
@@ -149,4 +162,3 @@ begin
 	end process;
 
 end Behavioral;
-
