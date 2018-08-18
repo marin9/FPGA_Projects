@@ -1,0 +1,9 @@
+NET "clk"	LOC = P50;
+
+NET "rst"		LOC = P139;	
+NET "wr_mode"	LOC = P132;
+NET "wr_din"	LOC = P131;
+
+NET "input"		LOC = P41;	
+NET "output"	LOC = P43;	
+NET "gpio"		LOC = P45;

@@ -1,0 +1,12 @@
+NET "clk"	LOC = P50;
+NET "rst"	LOC = P142 | PULLDOWN;
+
+NET "tx"		LOC = P51;
+NET "rx" 	LOC = P55;
+
+NET "btn1"	LOC = P131;
+
+
+NET "f"		LOC = P138;
+NET "i"		LOC = P120;
+NET "e"		LOC = P117;
