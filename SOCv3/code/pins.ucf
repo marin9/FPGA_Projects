@@ -1,0 +1,35 @@
+NET "clk50"		LOC = P50;
+NET "rst1"		LOC = P132 | PULLDOWN;
+
+//FLASH PROG
+NET "ss_p"		LOC = P33 | PULLDOWN;
+NET "sck_p"		LOC = P35 | PULLDOWN;
+NET "si_p"		LOC = P41 | PULLDOWN;
+NET "so_p"		LOC = P44;
+NET "prog"		LOC = P32 | PULLDOWN;
+NET "rst2"		LOC = P30 | PULLDOWN;
+NET "ready"		LOC = P27;
+
+// FLASH ROM
+NET "ss_r"		LOC = P34;
+NET "sck_r"		LOC = P40;
+NET "si_r"		LOC = P43;
+NET "so_r"		LOC = P45;
+
+// UART
+NET "rx"			LOC = P55;
+NET "tx"			LOC = P51;
+
+// PWM
+NET "pwmpin"	LOC = P126;
+
+// GPIO
+NET "gpiop[7]" LOC = P127;
+NET "gpiop[6]" LOC = P124;
+NET "gpiop[5]" LOC = P121;
+NET "gpiop[4]" LOC = P115;
+NET "gpiop[3]" LOC = P112;
+NET "gpiop[2]" LOC = P105;
+NET "gpiop[1]" LOC = P102;
+NET "gpiop[0]" LOC = P100;
+

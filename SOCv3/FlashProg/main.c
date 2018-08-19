@@ -118,7 +118,6 @@ int main(int argc, char **argv){
 void printHelp(){
 	printf("Usage:\n");
 	printf("progSOC -w filename     -- write file into memory.\n");
-	printf("progSOC -wv filename    -- write file into memory and verify.\n");
 	printf("progSOC -r filename     -- read memory into file.\n");
 	printf("progSOC -s 00101011     -- write status register.\n");
 	printf("progSOC -g	            -- read status register.\n");
