@@ -2,28 +2,50 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
+library std;
+use std.textio.all;
+
 
 entity ram is
-port( clk: in std_logic;
-		wr: in std_logic;
-		addr: in std_logic_vector(7 downto 0);
-		input: in std_logic_vector(7 downto 0);
-		output: out std_logic_vector(7 downto 0));
+port(	clk: in std_logic;
+		wr:in std_logic;
+		addr: in std_logic_vector(11 downto 0);
+		din: in std_logic_vector(7 downto 0);
+		dout: out std_logic_vector(7 downto 0));
 end ram;
 
 architecture Behavioral of ram is
-	type memory is array(0 to 255) of std_logic_vector(7 downto 0);
-	signal mem: memory;
+	type memory is array(0 to 4095) of std_logic_vector(7 downto 0);
+	
+	impure function read_program(filename : string) return memory is
+		file f: text open read_mode is filename;
+		variable byte: bit_vector(7 downto 0);
+		variable trace_line : line;
+		variable rom: memory;
+		variable i: integer;
+	begin
+		i := 0;
+		while not endfile(f) loop
+			readline(f, trace_line);
+			read(trace_line, byte);
+			rom(i) := to_stdlogicvector(byte);
+			i := i + 1;
+		end loop;
+		return rom;
+	end function;
+
+	signal ram: memory := read_program("prog.txt");
 begin
 
-	process(clk, wr) is
+	process(clk) is
 	begin
-		if(rising_edge(clk) and wr='1') then
-			mem(conv_integer(addr)) <= input;
+		if(falling_edge(clk)) then
+			if(wr='1') then
+				ram(conv_integer(addr)) <= din;
+			end if;
 		end if;
 	end process;
-	
-	output <= mem(conv_integer(addr));
+	dout <= ram(conv_integer(addr));
 
 end Behavioral;
 
