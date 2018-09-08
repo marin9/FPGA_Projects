@@ -17,9 +17,7 @@ architecture Behavioral of gpio is
 	signal din_ff: std_logic;
 	signal dout_ff: std_logic;
 begin
-
 	gpio <= din_ff when (mode_ff='1') else 'Z';
-
 	output <= dout_ff;
 
 	-- mode flip flop
@@ -59,4 +57,3 @@ begin
 	end process;
 
 end Behavioral;
-

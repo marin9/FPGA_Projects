@@ -41,22 +41,22 @@ int main(int argc, char **argv){
 			int num=atoi(word2+1);
 			if(num>255) printf("ERROR: Line %d\n", line);
 
-			if(strcmp(word1, "lda")==0) 	 writeCode(fileOut, 0x6000|num);
-			else if(strcmp(word1, "add")==0) writeCode(fileOut, 0x0000|num);
-			else if(strcmp(word1, "and")==0) writeCode(fileOut, 0x2000|num);
-			else if(strcmp(word1, "xor")==0) writeCode(fileOut, 0x4000|num);
+			if(strcmp(word1, "add")==0) 	 writeCode(fileOut, 0x0000|num);
+			else if(strcmp(word1, "nor")==0) writeCode(fileOut, 0x1000|num);
+			else if(strcmp(word1, "xor")==0) writeCode(fileOut, 0x2000|num);
+			else if(strcmp(word1, "lda")==0) writeCode(fileOut, 0x3000|num);
 			else printf("ERROR: Line %d\n", line);
 		}else{
 			int num=atoi(word2);
 			if(num>4095) printf("ERROR: Line %d\n", line);
 
-			if(strcmp(word1, "sta")==0) 	 writeCode(fileOut, 0x8000|num);
+			if(strcmp(word1, "add")==0) 	 writeCode(fileOut, 0x4000|num);
+			else if(strcmp(word1, "nor")==0) writeCode(fileOut, 0x5000|num);
+			else if(strcmp(word1, "xor")==0) writeCode(fileOut, 0x6000|num);
+			else if(strcmp(word1, "lda")==0) writeCode(fileOut, 0x7000|num);
+			else if(strcmp(word1, "sta")==0) writeCode(fileOut, 0x8000|num);
 			else if(strcmp(word1, "jmp")==0) writeCode(fileOut, 0x9000|num);
 			else if(strcmp(word1, "jeq")==0) writeCode(fileOut, 0xA000|num);
-			else if(strcmp(word1, "lda")==0) writeCode(fileOut, 0x7000|num);
-			else if(strcmp(word1, "add")==0) writeCode(fileOut, 0x1000|num);
-			else if(strcmp(word1, "and")==0) writeCode(fileOut, 0x3000|num);
-			else if(strcmp(word1, "xor")==0) writeCode(fileOut, 0x5000|num);
 			else printf("ERROR: Line %d\n", line);
 		}
 	}

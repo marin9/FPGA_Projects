@@ -1,5 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
 
 entity mcu is
 port(	clk50: in std_logic;
@@ -44,7 +46,7 @@ architecture Behavioral of mcu is
 	end component;
 
 	signal clk: std_logic := '0';
-	signal clk1: std_logic := '0';
+	signal clkc: std_logic_vector(4 downto 0) := "00000";
 	signal rst, wr: std_logic;
 	signal addr: std_logic_vector(11 downto 0);
 	signal data_in, data_out: std_logic_vector(7 downto 0);
@@ -58,8 +60,12 @@ begin
 	clk_div: process(clk50) is
 	begin
 		if(falling_edge(clk50)) then
-			clk <= clk1;
-			clk1 <= not clk;
+			if(clkc="11001") then
+				clkc <= (others => '0');
+				clk <= not clk;
+			else
+				clkc <= clkc + 1;
+			end if;
 		end if;
 	end process;
 

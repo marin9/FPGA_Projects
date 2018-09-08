@@ -2,50 +2,53 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-library std;
-use std.textio.all;
-
 
 entity ram is
 port(	clk: in std_logic;
-		wr:in std_logic;
-		addr: in std_logic_vector(11 downto 0);
-		din: in std_logic_vector(7 downto 0);
+		en: in std_logic;
+		sel: in std_logic;
+		wr0: in std_logic;
+		addr0: in std_logic_vector(12 downto 0);
+		din0: in std_logic_vector(7 downto 0);
+		wr1: in std_logic;
+		addr1: in std_logic_vector(12 downto 0);
+		din1: in std_logic_vector(7 downto 0);
 		dout: out std_logic_vector(7 downto 0));
 end ram;
 
 architecture Behavioral of ram is
-	type memory is array(0 to 4095) of std_logic_vector(7 downto 0);
+	type memory is array(0 to 2**13-1) of std_logic_vector(7 downto 0);
+	signal mem: memory;
 	
-	impure function read_program(filename : string) return memory is
-		file f: text open read_mode is filename;
-		variable byte: bit_vector(7 downto 0);
-		variable trace_line : line;
-		variable rom: memory;
-		variable i: integer;
-	begin
-		i := 0;
-		while not endfile(f) loop
-			readline(f, trace_line);
-			read(trace_line, byte);
-			rom(i) := to_stdlogicvector(byte);
-			i := i + 1;
-		end loop;
-		return rom;
-	end function;
-
-	signal ram: memory := read_program("prog.txt");
+	signal addr: std_logic_vector(12 downto 0);
+	signal din: std_logic_vector(7 downto 0);
+	signal wr: std_logic;
 begin
+
+	with sel select wr <=
+	wr0 when '0',
+	wr1 when others;
+	
+	with sel select addr <=
+	addr0 when '0',
+	addr1 when others;
+	
+	with sel select din <=
+	din0 when '0',
+	din1 when others;
+	
 
 	process(clk) is
 	begin
 		if(falling_edge(clk)) then
-			if(wr='1') then
-				ram(conv_integer(addr)) <= din;
+			if(en='1') then
+				if(wr='1') then
+					mem(conv_integer(addr)) <= din;
+				else
+					dout <= mem(conv_integer(addr));
+				end if;
 			end if;
 		end if;
 	end process;
-	dout <= ram(conv_integer(addr));
 
 end Behavioral;
-

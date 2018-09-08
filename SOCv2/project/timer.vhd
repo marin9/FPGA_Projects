@@ -13,7 +13,7 @@ end timer;
 
 architecture Behavioral of timer is
 	signal counter10ms, next_counter10ms: std_logic_vector(7 downto 0);
-	signal counterTick, next_counterTick: std_logic_vector(18 downto 0);
+	signal counterTick, next_counterTick: std_logic_vector(16 downto 0);
 begin
 
 	output <= counter10ms;
@@ -25,7 +25,7 @@ begin
 			next_counterTick <= (others => '0');
 		else
 			next_counter10ms <= counter10ms;			
-			if(counterTick=x"7A120") then
+			if(counterTick=x"14585") then
 				next_counterTick <= (others => '0');			
 				if(counter10ms="00000000") then
 					next_counter10ms <= counter10ms;
@@ -52,3 +52,4 @@ begin
 	end process;
 	
 end Behavioral;
+

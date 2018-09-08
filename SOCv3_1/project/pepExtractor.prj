@@ -1,0 +1,5 @@
+work	"cpu.vhd"
+work	"gpio.vhd"
+work	"mcu.vhd"
+work	"ram.vhd"
+work	"timer.vhd"
