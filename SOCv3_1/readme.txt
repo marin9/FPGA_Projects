@@ -1,6 +1,6 @@
 System on chip
 
-CPU_freq: 1 MHz
+CPU_freq: 12.5 MHz
 Data bus: 8 bit
 Address bus: 12 bit
 Registers: 
@@ -16,14 +16,15 @@ Instructions:
 	jmp const
 	jeq const
 
-#const: 8 bit
-address: 12 bit
+const: 
+	#data:   8 bit
+	address: 12 bit
 
 
 RAM/ROM: 4096 B
 Timer: 8 bit, tick 10ms
-	read at 0xfff
-	write at 0xffd
+	read:  0xfff
+	write: 0xffd
 GPIO: 8 bit
-	read at 0xffe
-	write data at 0xffc
+	read:  0xffe
+	write: 0xffc
