@@ -16,7 +16,7 @@ Instructions:
 	jmp const
 	jeq const
 
-#const: 8 bit
+const: 8 bit
 address: 12 bit
 
 

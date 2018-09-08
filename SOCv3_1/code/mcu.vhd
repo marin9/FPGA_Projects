@@ -6,7 +6,8 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity mcu is
 port(	clk50: in std_logic;
 		reset: in std_logic;
-		ioport: inout std_logic_vector(7 downto 0));
+		p_in: in std_logic_vector(7 downto 0);
+		p_out: out std_logic_vector(7 downto 0));
 end mcu;
 
 architecture Behavioral of mcu is
@@ -27,7 +28,7 @@ architecture Behavioral of mcu is
 			dout: out std_logic_vector(7 downto 0));
 	end component;
 
-	component timer is
+	component tmr is
 	port(	clk: in std_logic;
 			rst: in std_logic;
 			wr: in std_logic;
@@ -35,37 +36,20 @@ architecture Behavioral of mcu is
 			output: out std_logic_vector(7 downto 0));
 	end component;
 
-	component gpio is
-	port(	clk: in std_logic;
-			rst: in std_logic;
-			wr_mode: in std_logic;
-			wr_din: in std_logic;			
-			input: in std_logic;
-			output: out std_logic;
-			gpio: inout std_logic);
-	end component;
-
-	signal clk: std_logic := '0';
-	signal clkc: std_logic_vector(4 downto 0) := "00000";
+	signal clk, clk1: std_logic := '0';
 	signal rst, wr: std_logic;
 	signal addr: std_logic_vector(11 downto 0);
 	signal data_in, data_out: std_logic_vector(7 downto 0);
 	signal ram_out: std_logic_vector(7 downto 0);
 	signal tmr_wr: std_logic;
 	signal tmr_out: std_logic_vector(7 downto 0);
-	signal gpio_mod, gpio_wr: std_logic;
-	signal gpio_out: std_logic_vector(7 downto 0);
 begin
 
 	clk_div: process(clk50) is
 	begin
 		if(falling_edge(clk50)) then
-			if(clkc="11001") then
-				clkc <= (others => '0');
-				clk <= not clk;
-			else
-				clkc <= clkc + 1;
-			end if;
+			clk <= clk1;
+			clk1 <= not clk;
 		end if;
 	end process;
 
@@ -80,28 +64,28 @@ begin
 
 	memory: ram port map(clk, wr, addr, data_out, ram_out);
 
-	timer0: timer port map(clk, rst, tmr_wr, data_out, tmr_out);
+	timer: tmr port map(clk, rst, tmr_wr, data_out, tmr_out);
 
-	gpion: for i in 0 to 7 generate
-		gpio_n: gpio port map(clk, rst, gpio_mod, gpio_wr, data_out(i), gpio_out(i), ioport(i));
-   end generate gpion;
 	
 	with addr select data_in <=
+	p_in		when x"FFE",
 	tmr_out	when x"FFF",
-	gpio_out	when x"FFE",
 	ram_out	when others;
 	
 	with addr select tmr_wr <=
 	'1' when x"FFD",
 	'0' when others;
 	
-	with addr select gpio_mod <=
-	'1' when x"FFC",
-	'0' when others;
-	
-	with addr select gpio_wr <=
-	'1' when x"FFB",
-	'0' when others;
+	gpio: process(clk) is
+	begin
+		if(falling_edge(clk)) then
+			if(rst='1') then
+				p_out <= (others => '0');
+			elsif(addr=x"FFC") then
+				p_out <= data_out;
+			end if;
+		end if;
+	end process;
 
 end Behavioral;
 

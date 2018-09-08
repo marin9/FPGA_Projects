@@ -9,13 +9,13 @@
          <ClosedNodesVersion>2</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>mcu - Behavioral (/home/ise/Desktop/SOCv1_1/mcu.vhd)</SelectedItem>
+         <SelectedItem>mcu - Behavioral (/home/ise/Desktop/SOCv3_1/project/mcu.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000020200000001000000010000006400000152000000020000000000000000000000000200000064ffffffff000000810000000300000002000001520000000100000003000000000000000100000003</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000002020000000100000001000000640000014f000000020000000000000000000000000200000064ffffffff0000008100000003000000020000014f0000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>mcu - Behavioral (/home/ise/Desktop/SOCv1_1/mcu.vhd)</CurrentItem>
+      <CurrentItem>mcu - Behavioral (/home/ise/Desktop/SOCv3_1/project/mcu.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>

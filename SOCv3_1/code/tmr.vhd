@@ -3,17 +3,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 
-entity timer is
+entity tmr is
 port(	clk: in std_logic;
 		rst: in std_logic;
 		wr: in std_logic;
 		input: in std_logic_vector(7 downto 0);
 		output: out std_logic_vector(7 downto 0));
-end timer;
+end tmr;
 
-architecture Behavioral of timer is
+architecture Behavioral of tmr is
 	signal counter10ms, next_counter10ms: std_logic_vector(7 downto 0);
-	signal counterTick, next_counterTick: std_logic_vector(13 downto 0);
+	signal counterTick, next_counterTick: std_logic_vector(16 downto 0);
 begin
 
 	output <= counter10ms;
@@ -25,7 +25,7 @@ begin
 			next_counterTick <= (others => '0');
 		else
 			next_counter10ms <= counter10ms;			
-			if(counterTick=x"2710") then
+			if(counterTick=x"1E848") then
 				next_counterTick <= (others => '0');			
 				if(counter10ms="00000000") then
 					next_counter10ms <= counter10ms;

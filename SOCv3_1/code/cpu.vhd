@@ -37,8 +37,8 @@ begin
 		when IF2 => 
 			n_dr <= din;
 			n_pc <= pc + 1;
-			if(ir(7 downto 6)="01") then next_state <= EXE;
-			else next_state <= RDM; end if;
+			if(ir(7 downto 6)="01") then next_state <= RDM;
+			else next_state <= EXE; end if;
 		when EXE =>		
 			if(ir(7 downto 4)="1010" and ac=x"00") then
 				n_pc <= ir(3 downto 0) & dr;
@@ -61,7 +61,7 @@ begin
 	end process;
 
 	-- Arithmetic-Logic unit
-	with ir(6 downto 5) select res <=
+	with ir(5 downto 4) select res <=
 	ac + dr		when "00",
 	ac nor dr	when "01",
 	ac xor dr	when "10",
