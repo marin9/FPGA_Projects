@@ -9,13 +9,13 @@ use std.textio.all;
 entity ram is
 port(	clk: in std_logic;
 		wr:in std_logic;
-		addr: in std_logic_vector(11 downto 0);
+		addr: in std_logic_vector(10 downto 0);
 		din: in std_logic_vector(7 downto 0);
 		dout: out std_logic_vector(7 downto 0));
 end ram;
 
 architecture Behavioral of ram is
-	type memory is array(0 to 4095) of std_logic_vector(7 downto 0);
+	type memory is array(0 to 2047) of std_logic_vector(7 downto 0);
 	
 	impure function read_program(filename : string) return memory is
 		file f: text open read_mode is filename;

@@ -15,7 +15,7 @@ architecture Behavioral of mcu is
 	port(	clk: in std_logic;
 			rst: in std_logic;
 			wr: out std_logic;
-			addr: out std_logic_vector(11 downto 0);
+			addr: out std_logic_vector(10 downto 0);
 			din: in std_logic_vector(7 downto 0);
 			dout: out std_logic_vector(7 downto 0));
 	end component;
@@ -23,7 +23,7 @@ architecture Behavioral of mcu is
 	component ram is
 	port(	clk: in std_logic;
 			wr:in std_logic;
-			addr: in std_logic_vector(11 downto 0);
+			addr: in std_logic_vector(10 downto 0);
 			din: in std_logic_vector(7 downto 0);
 			dout: out std_logic_vector(7 downto 0));
 	end component;
@@ -38,7 +38,7 @@ architecture Behavioral of mcu is
 
 	signal clk, clk1: std_logic := '0';
 	signal rst, wr: std_logic;
-	signal addr: std_logic_vector(11 downto 0);
+	signal addr: std_logic_vector(10 downto 0);
 	signal data_in, data_out: std_logic_vector(7 downto 0);
 	signal ram_out: std_logic_vector(7 downto 0);
 	signal tmr_wr: std_logic;
@@ -68,12 +68,12 @@ begin
 
 	
 	with addr select data_in <=
-	p_in		when x"FFE",
-	tmr_out	when x"FFF",
+	p_in		when "111" & x"FE",
+	tmr_out	when "111" & x"FF",
 	ram_out	when others;
 	
 	with addr select tmr_wr <=
-	'1' when x"FFD",
+	'1' when "111" & x"FD",
 	'0' when others;
 	
 	gpio: process(clk) is
@@ -81,7 +81,7 @@ begin
 		if(falling_edge(clk)) then
 			if(rst='1') then
 				p_out <= (others => '0');
-			elsif(addr=x"FFC") then
+			elsif(addr=("111" & x"FC")) then
 				p_out <= data_out;
 			end if;
 		end if;

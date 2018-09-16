@@ -2,10 +2,10 @@ System on chip
 
 CPU_freq: 12.5 MHz
 Data bus: 8 bit
-Address bus: 12 bit
+Address bus: 11 bit
 Registers: 
 	acc: 8 bit
-	pc: 12 bit
+	pc: 11 bit
 
 Instructions:
 	add {#}const
@@ -18,13 +18,13 @@ Instructions:
 
 const: 
 	#data:   8 bit
-	address: 12 bit
+	address: 11 bit
 
 
-RAM/ROM: 4096 B
+RAM/ROM: 2048 B
 Timer: 8 bit, tick 10ms
-	read:  0xfff
-	write: 0xffd
+	read:  0x7ff
+	write: 0x7fd
 GPIO: 8 bit
-	read:  0xffe
-	write: 0xffc
+	read:  0x7fe
+	write: 0x7fc

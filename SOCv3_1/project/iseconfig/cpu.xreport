@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2018-09-05T14:03:09</DateModified>
+  <DateModified>2018-09-16T16:56:34</DateModified>
   <ModuleName>cpu</ModuleName>
   <SummaryTimeStamp>2018-09-04T16:35:23</SummaryTimeStamp>
-  <SavedFilePath>/home/marin/Desktop/SOCv1_1/iseconfig/cpu.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/marin/Desktop/SOCv1_1/</ImplementationReportsDirectory>
+  <SavedFilePath>/home/marin/Desktop/project/iseconfig/cpu.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>/home/marin/Desktop/project/</ImplementationReportsDirectory>
   <DateInitialized>2018-09-04T15:09:25</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
