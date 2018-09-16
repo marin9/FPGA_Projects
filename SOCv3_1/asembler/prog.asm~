@@ -9,7 +9,7 @@ sta 100
 
 / set gpio
 lda 100
-sta 2044
+sta 4092
 
 / inc
 add #1
@@ -17,10 +17,10 @@ sta 100
 
 / set timer
 lda #100
-sta 2045
+sta 4093
 
 / wait
-lda 2047
+lda 4095
 jeq 4
 jmp 16
 
