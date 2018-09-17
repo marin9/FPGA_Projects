@@ -1,8 +1,8 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -c
 LFLAGS=-lm
-DEPS=asembler.h table.h mlib.h lang.h
-OBJS=asembler.c table.o mlib.o main.o lang.o
+DEPS=asembler.h table.h mlib.h
+OBJS=asembler.o table.o mlib.o main.o
 TARGET=asm10
 
 

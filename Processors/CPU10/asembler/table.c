@@ -55,6 +55,7 @@ int table_get(char* text){
 		if(strcmp(p->id, text)==0){
 			return p->value;
 		}
+		p=p->next;
 	}
 	return -1;
 }
@@ -63,7 +64,7 @@ void table_print(){
 	struct item *p=first;
 	printf("Table:\n");
 	while(p!=NULL){
-		printf("[%s]: %d\n", p->id, p->value);
+		printf("%s: %d\n", p->id, p->value);
 		p=p->next;
 	}
 	printf("\n");
