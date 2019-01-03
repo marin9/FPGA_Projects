@@ -1,2 +1,0 @@
-System on chip
-

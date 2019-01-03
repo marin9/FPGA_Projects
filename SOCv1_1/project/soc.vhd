@@ -1,61 +1,52 @@
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 
 entity soc is
 port( clk: in std_logic;
 		rst: in std_logic;
+		sck: out std_logic;
+		ss: out std_logic;
+		si: out std_logic;
+		so: in std_logic;
+		input: in std_logic_vector(7 downto 0);
+		output: out std_logic_vector(7 downto 0));
+end soc;
+
+architecture Behavioral of soc is
+	component spi is
+	port( clk: in std_logic;
+		rst: in std_logic;
 		ss: out std_logic;
 		sck: out std_logic;
 		si: out std_logic;
 		so: in std_logic;
-		input0: in std_logic_vector(7 downto 0);
-		input1: in std_logic_vector(7 downto 0);
-		output0: out std_logic_vector(7 downto 0);
-		output1: out std_logic_vector(7 downto 0);
-
-		o: out std_logic);
-end soc;
-
-architecture Behavioral of soc is
-	component spiread is
-	generic(AW: integer := 10; DW: integer := 16);
-	port( clk: in std_logic;
-			rst: in std_logic;
-			fin: out std_logic;
-			
-			sck: out std_logic;
-			ss: out std_logic;
-			si: out std_logic;
-			so: in std_logic;
-			
-			wr: out std_logic;
-			address: out std_logic_vector(AW-1 downto 0);
-			data: out std_logic_vector(DW-1 downto 0));
+		wr: out std_logic;
+		addr: out std_logic_vector(11 downto 0);
+		data: out std_logic_vector(15 downto 0);
+		fin: out std_logic);
 	end component;
 	
 	component rom is
-	generic(AW: integer := 10; DW: integer := 13);
 	port(	clk: in std_logic;
 			en: in std_logic;
 			wr: in std_logic;
-			addr_in: in std_logic_vector(AW-1 downto 0);
-			addr_out: in std_logic_vector(AW-1 downto 0);
-			input: in std_logic_vector(DW-1 downto 0);
-			output: out std_logic_vector(DW-1 downto 0));
+			addr_in: in std_logic_vector(11 downto 0);
+			addr_out: in std_logic_vector(11 downto 0);
+			input: in std_logic_vector(15 downto 0);
+			output: out std_logic_vector(15 downto 0));
 	end component;
-
+	
 	component cpu is
 	port( clk: in std_logic;
 			rst: in std_logic;
 			wr: out std_logic;
-			pc: out std_logic_vector(9 downto 0);
-			instr: in std_logic_vector(12 downto 0);
-			addr: out std_logic_vector(7 downto 0);
-			input: in std_logic_vector(7 downto 0);
-			output: out std_logic_vector(7 downto 0));
+			rom_addr: out std_logic_vector(11 downto 0);
+			rom_data: in std_logic_vector(15 downto 0);
+			address: out std_logic_vector(7 downto 0);
+			data_in: in std_logic_vector(7 downto 0);
+			data_out: out std_logic_vector(7 downto 0));
 	end component;
 	
 	component ram is
@@ -66,64 +57,64 @@ architecture Behavioral of soc is
 			output: out std_logic_vector(7 downto 0));
 	end component;
 	
-	component gpioout is
-	generic(ADR: std_logic_vector(7 downto 0) := (others => '1'));
+	component gpio is
+	generic(ADDR_OUT: integer := 255);
 	port( clk: in std_logic;
 			rst: in std_logic;
+			en_wr: in std_logic;
 			addr: in std_logic_vector(7 downto 0);
-			data: in std_logic_vector(7 downto 0);
-			pinout: out std_logic_vector(7 downto 0));
+			data_in: in std_logic_vector(7 downto 0); 
+			data_out: out std_logic_vector(7 downto 0);
+			pins_in: in std_logic_vector(7 downto 0);
+			pins_out: out std_logic_vector(7 downto 0));
 	end component;
-
-	component gpioin is
-	port( clk: in std_logic;
-			rst: in std_logic;
-			data: out std_logic_vector(7 downto 0);
-			pinout: in std_logic_vector(7 downto 0));
-	end component;
-
-
-	signal rom_addr_in: std_logic_vector(9 downto 0);
-	signal rom_data_in: std_logic_vector(15 downto 0);
-	signal grst: std_logic;
-	signal fin: std_logic;
-	signal rom_wr: std_logic;
-	signal rom_addr_out: std_logic_vector(9 downto 0);
-	signal rom_data_out: std_logic_vector(12 downto 0);
 	
-	signal ram_wr: std_logic;
-	signal ram_addr: std_logic_vector(7 downto 0);
-	signal cpu_out: std_logic_vector(7 downto 0);
-	signal cpu_in: std_logic_vector(7 downto 0);
-	signal cpu_in_ram: std_logic_vector(7 downto 0);
-	signal cpu_in_gpin0: std_logic_vector(7 downto 0);
-	signal cpu_in_gpin1: std_logic_vector(7 downto 0);
+	
+	signal s_rst: std_logic;
+	
+	signal rom_en: std_logic;
+	signal rom_addr_in: std_logic_vector(11 downto 0);
+	signal rom_addr_out: std_logic_vector(11 downto 0);
+	signal rom_data_in: std_logic_vector(15 downto 0);
+	signal rom_data_out: std_logic_vector(15 downto 0);
+	
+	signal wr: std_logic;
+	signal ram_w: std_logic;
+	signal addr_bus: std_logic_vector(7 downto 0);
+	signal din_bus: std_logic_vector(7 downto 0);
+	signal dout_bus: std_logic_vector(7 downto 0);
+	signal ram_out: std_logic_vector(7 downto 0);
+	signal gpio_out: std_logic_vector(7 downto 0);
+	
+	signal cnt: std_logic_vector(3 downto 0);
+	signal en: std_logic;
 begin
 
-	grst <= not fin;
-	bootloader: spiread port map(clk, rst, fin, sck, ss, si, so, rom_wr, rom_addr_in, rom_data_in);
+	process(clk) is
+	begin
+		if(rising_edge(clk)) then
+			if(rst='1') then
+				cnt <= (others => '0');
+			else
+				cnt <= cnt + 1;
+			end if;
+		end if;
+	end process;
+	en <= not rst;
 
-	program_memory: rom port map(clk, '1', rom_wr, rom_addr_in, rom_addr_out, rom_data_in(12 downto 0), rom_data_out);
-	
-	processor: cpu port map(clk, grst, ram_wr, rom_addr_out, rom_data_out, ram_addr, cpu_in, cpu_out);
+	bootloader: spi port map(cnt(3), rst, ss, sck, si, so, wr, rom_addr_in, rom_data_in, s_rst);
 
-	data_memory: ram port map(clk, ram_wr, ram_addr, cpu_out, cpu_in_ram);
+	program_memory: rom port map(cnt(3), en, wr, rom_addr_in, rom_addr_out, rom_data_in, rom_data_out);
 
+	processor: cpu port map(cnt(3), s_rst, ram_w, rom_addr_out, rom_data_out, addr_bus, din_bus, dout_bus);
 	
-	gpio0_in: gpioin port map(clk, grst, cpu_in_gpin0, input0);
+	with addr_bus select din_bus <=
+	gpio_out when x"FE",
+	ram_out  when others;
 	
-	gpio1_in: gpioin port map(clk, grst, cpu_in_gpin1, input1);
+	data_memory: ram port map(cnt(3), ram_w, addr_bus, dout_bus, ram_out);
 	
-	gpio2_out: gpioout generic map("11111110") port map(clk, grst, ram_addr, cpu_out, output0);
-
-	gpio3_out: gpioout generic map("11111111") port map(clk, grst, ram_addr, cpu_out, output1);
+	gpio_port: gpio generic map(255) port map(cnt(3), rst, ram_w, addr_bus, dout_bus, gpio_out, input, output);
 	
-	with ram_addr select cpu_in <=
-	cpu_in_gpin0 when "11111100",
-	cpu_in_gpin1 when "11111101",
-	cpu_in_ram   when others;
-	
-	o <= rom_data_in(15) and rom_data_in(14) and rom_data_in(13); 
-
 end Behavioral;
 

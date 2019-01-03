@@ -1,3 +1,5 @@
+System on Chip 2
+
 CPU registers:
 	ACC 8  bit
 	PC  13 bit

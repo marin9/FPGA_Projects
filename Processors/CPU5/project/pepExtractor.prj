@@ -1,0 +1,3 @@
+work	"cpu5.vhd"
+work	"ram.vhd"
+work	"top_module.vhd"

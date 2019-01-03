@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -lib "secureip" -o "/home/ise/Desktop/SOCv1_1/test_mcu_isim_beh.exe" -prj "/home/ise/Desktop/SOCv1_1/test_mcu_beh.prj" "work.test_mcu" 

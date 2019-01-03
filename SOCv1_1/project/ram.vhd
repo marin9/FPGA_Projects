@@ -18,7 +18,7 @@ begin
 
 	process(clk, wr) is
 	begin
-		if(rising_edge(clk) and wr='1') then
+		if(falling_edge(clk) and wr='1') then
 			mem(conv_integer(addr)) <= input;
 		end if;
 	end process;
@@ -26,4 +26,3 @@ begin
 	output <= mem(conv_integer(addr));
 
 end Behavioral;
-

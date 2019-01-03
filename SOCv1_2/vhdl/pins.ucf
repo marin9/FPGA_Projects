@@ -1,0 +1,37 @@
+NET "clk" 	LOC = P50;
+NET "clk" TNM_NET = tclk;
+TIMESPEC  TS_CLK = PERIOD "tclk" 1 us HIGH 50%;
+
+NET "rst" 	LOC = P131;
+
+NET "ss" 	LOC = P139;
+NET "sck" 	LOC = P141;
+NET "si"		LOC = P143;
+NET "so"		LOC = P2;
+
+NET "output1[7]" LOC = P138;
+NET "output1[6]" LOC = P137;
+NET "output1[5]" LOC = P134;
+NET "output1[4]" LOC = P133;
+NET "output1[3]" LOC = P120;
+NET "output1[2]" LOC = P119;
+NET "output1[1]" LOC = P118;
+NET "output1[0]" LOC = P117;
+
+NET "input0[7]" LOC = P22;
+NET "input0[6]" LOC = P24;
+NET "input0[5]" LOC = P27;
+NET "input0[4]" LOC = P30;
+NET "input0[3]" LOC = P33;
+NET "input0[2]" LOC = P35;
+NET "input0[1]" LOC = P41;
+NET "input0[0]" LOC = P44;
+
+NET "input1[7]" LOC = P23;
+NET "input1[6]" LOC = P26;
+NET "input1[5]" LOC = P29;
+NET "input1[4]" LOC = P32;
+NET "input1[3]" LOC = P34;
+NET "input1[2]" LOC = P40;
+NET "input1[1]" LOC = P43;
+NET "input1[0]" LOC = P45;

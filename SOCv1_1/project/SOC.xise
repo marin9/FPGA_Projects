@@ -15,83 +15,61 @@
   <version xil_pn:ise_version="14.7" xil_pn:schema_version="2"/>
 
   <files>
-    <file xil_pn:name="alu.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="6"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="11"/>
-    </file>
     <file xil_pn:name="reg.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="3"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="6"/>
-    </file>
-    <file xil_pn:name="ireg.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="4"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="7"/>
-    </file>
-    <file xil_pn:name="stack.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="2"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="2"/>
     </file>
-    <file xil_pn:name="dec.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="5"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="9"/>
+    <file xil_pn:name="pc.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="3"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="3"/>
     </file>
-    <file xil_pn:name="instructions.vhd" xil_pn:type="FILE_VHDL">
+    <file xil_pn:name="alu.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="5"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="5"/>
+    </file>
+    <file xil_pn:name="dec.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="4"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="4"/>
+    </file>
+    <file xil_pn:name="instr.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="1"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="1"/>
     </file>
     <file xil_pn:name="cpu.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="7"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="17"/>
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="6"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="10"/>
     </file>
     <file xil_pn:name="test_cpu.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="8"/>
-      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="8"/>
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="7"/>
+      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="67"/>
       <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="2"/>
-      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="8"/>
-    </file>
-    <file xil_pn:name="rom.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="13"/>
+      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="67"/>
     </file>
     <file xil_pn:name="ram.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="14"/>
-    </file>
-    <file xil_pn:name="gpioout.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="15"/>
-    </file>
-    <file xil_pn:name="gpioin.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="16"/>
-    </file>
-    <file xil_pn:name="spicontrol.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="3"/>
-    </file>
-    <file xil_pn:name="counter.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="10"/>
-    </file>
-    <file xil_pn:name="delay.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="8"/>
     </file>
-    <file xil_pn:name="shiftreg_si.vhd" xil_pn:type="FILE_VHDL">
+    <file xil_pn:name="rom.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="5"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="7"/>
     </file>
-    <file xil_pn:name="shiftreg_so.vhd" xil_pn:type="FILE_VHDL">
+    <file xil_pn:name="gpio.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="4"/>
-    </file>
-    <file xil_pn:name="spiread.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="12"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="9"/>
     </file>
     <file xil_pn:name="soc.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="18"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="11"/>
+    </file>
+    <file xil_pn:name="spi.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="6"/>
+    </file>
+    <file xil_pn:name="test_spi.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
+      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="64"/>
+      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="0"/>
+      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="64"/>
     </file>
     <file xil_pn:name="pins.ucf" xil_pn:type="FILE_UCF">
       <association xil_pn:name="Implementation" xil_pn:seqID="0"/>
@@ -141,6 +119,7 @@
     <property xil_pn:name="Create Mask File" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Create ReadBack Data Files" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Cross Clock Analysis" xil_pn:value="false" xil_pn:valueState="default"/>
+    <property xil_pn:name="Custom Project Filename Post-Route" xil_pn:value="msim.prj" xil_pn:valueState="non-default"/>
     <property xil_pn:name="DSP Utilization Ratio" xil_pn:value="100" xil_pn:valueState="default"/>
     <property xil_pn:name="Delay Values To Be Read from SDF" xil_pn:value="Setup Time" xil_pn:valueState="default"/>
     <property xil_pn:name="Device" xil_pn:value="xc6slx9" xil_pn:valueState="non-default"/>
@@ -336,7 +315,7 @@
     <property xil_pn:name="Selected Simulation Root Source Node Behavioral" xil_pn:value="work.test_cpu" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Selected Simulation Root Source Node Post-Map" xil_pn:value="" xil_pn:valueState="default"/>
     <property xil_pn:name="Selected Simulation Root Source Node Post-Route" xil_pn:value="work.test_cpu" xil_pn:valueState="non-default"/>
-    <property xil_pn:name="Selected Simulation Root Source Node Post-Translate" xil_pn:value="work.test_cpu" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="Selected Simulation Root Source Node Post-Translate" xil_pn:value="" xil_pn:valueState="default"/>
     <property xil_pn:name="Selected Simulation Source Node" xil_pn:value="uut" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Set SPI Configuration Bus Width spartan6" xil_pn:value="1" xil_pn:valueState="default"/>
     <property xil_pn:name="Setup External Master Clock Division spartan6" xil_pn:value="1" xil_pn:valueState="default"/>
@@ -354,7 +333,7 @@
     <property xil_pn:name="Specify Top Level Instance Names Behavioral" xil_pn:value="work.test_cpu" xil_pn:valueState="default"/>
     <property xil_pn:name="Specify Top Level Instance Names Post-Map" xil_pn:value="Default" xil_pn:valueState="default"/>
     <property xil_pn:name="Specify Top Level Instance Names Post-Route" xil_pn:value="work.test_cpu" xil_pn:valueState="default"/>
-    <property xil_pn:name="Specify Top Level Instance Names Post-Translate" xil_pn:value="work.test_cpu" xil_pn:valueState="default"/>
+    <property xil_pn:name="Specify Top Level Instance Names Post-Translate" xil_pn:value="Default" xil_pn:valueState="default"/>
     <property xil_pn:name="Speed Grade" xil_pn:value="-2" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Starting Placer Cost Table (1-100) Map spartan6" xil_pn:value="1" xil_pn:valueState="default"/>
     <property xil_pn:name="Synthesis Tool" xil_pn:value="XST (VHDL/Verilog)" xil_pn:valueState="default"/>
@@ -411,8 +390,8 @@
     <property xil_pn:name="PROP_PostSynthSimTop" xil_pn:value="" xil_pn:valueState="default"/>
     <property xil_pn:name="PROP_PostXlateSimTop" xil_pn:value="" xil_pn:valueState="default"/>
     <property xil_pn:name="PROP_PreSynthesis" xil_pn:value="PreSynthesis" xil_pn:valueState="default"/>
-    <property xil_pn:name="PROP_intProjectCreationTimestamp" xil_pn:value="2018-02-26T12:22:36" xil_pn:valueState="non-default"/>
-    <property xil_pn:name="PROP_intWbtProjectID" xil_pn:value="354AB1CAC1FC7E10752D181DC20CE7AE" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="PROP_intProjectCreationTimestamp" xil_pn:value="2018-03-18T13:09:14" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="PROP_intWbtProjectID" xil_pn:value="28400F23217AF747BB03F2BCAE557F8F" xil_pn:valueState="non-default"/>
     <property xil_pn:name="PROP_intWorkingDirLocWRTProjDir" xil_pn:value="Same" xil_pn:valueState="non-default"/>
     <property xil_pn:name="PROP_intWorkingDirUsed" xil_pn:value="No" xil_pn:valueState="non-default"/>
   </properties>

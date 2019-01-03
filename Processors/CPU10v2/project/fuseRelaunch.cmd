@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "secureip" -o "/home/marin/Desktop/CPU_A10/test_isim_beh.exe" -prj "/home/marin/Desktop/CPU_A10/test_beh.prj" "work.test" 

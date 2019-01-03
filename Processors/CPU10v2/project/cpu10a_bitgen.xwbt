@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/home/marin/Desktop/CPU_A10/cpu10a.ncd
+OUTFILE=/home/marin/Desktop/CPU_A10/cpu10a.bit
+FAMILY=Spartan6
+PART=xc6slx9-2tqg144
+WORKINGDIR=/home/marin/Desktop/CPU_A10
+LICENSE=WebPack
+USER_INFO=211359973_0_0_213
