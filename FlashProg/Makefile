@@ -1,18 +1,18 @@
 CC=gcc
 FLAGS=-Wall -Wextra -c
 LIBS=-lwiringPi
-HDRS=spi.h 25lc540.h fs.h
-OBJ=main.o 25lc640.o spi.o fs.o
+HDRS=spi.h flash.h fs.h
+OBJ=spi.o flash.h fs.o main.o
 TARGET=flashProg
 
-
-%.o: %.c $(HDRS)
-	$(CC) $(FLAGS) $@ $<
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
 	$(CC) $(OBJ) -o $(TARGET) $(LIBS)
+
+%.o: %.c $(HDRS)
+	$(CC) $(FLAGS) $< -o $@
 
 clean:
 	rm *.o

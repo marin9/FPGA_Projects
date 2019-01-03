@@ -1,22 +1,26 @@
-#include "spi.h"
 #include <wiringPi.h>
+#include "spi.h"
+
+static int CK;
+static int CS;
+static int SI;
+static int SO;
 
 
-void spi_init(){
+void spi_init(int ck, int cs, int si, int so){
+	CK=ck;
+	CS=cs;
+	SI=si;
+	SO=so;
+
 	pinMode(CS, OUTPUT);
 	pinMode(SO, INPUT);
 	pinMode(SI, OUTPUT);
 	pinMode(CK, OUTPUT);
-	pinMode(WP, OUTPUT);
-	pinMode(HD, OUTPUT);
-	pinMode(VC, OUTPUT);
 
 	digitalWrite(CS, HIGH);
 	digitalWrite(SI, LOW);
 	digitalWrite(CK, LOW);
-	digitalWrite(WP, HIGH);
-	digitalWrite(HD, HIGH);
-	digitalWrite(VC, HIGH);
 }
 
 void spi_begin(){
