@@ -1,0 +1,20 @@
+NET "clk"	LOC = P50;
+NET "grst"	LOC = P123 | PULLDOWN;
+
+NET "sel"	LOC = P139 | PULLDOWN;
+NET "b_cl"	LOC = P141 | PULLDOWN;
+NET "b_wr"	LOC = P143 | PULLDOWN;
+NET "b_pl"	LOC = P132 | PULLDOWN;
+NET "b_mn"	LOC = P131 | PULLDOWN;
+NET "b_0"	LOC = P8 | PULLDOWN;
+NET "b_1"	LOC = P10 | PULLDOWN;
+NET "btn_d[1]"	LOC = P12 | PULLDOWN;
+NET "btn_d[0]"	LOC = P15 | PULLDOWN;
+
+NET "stop"	LOC = P126;
+NET "rs"	LOC = P127;
+NET "en"	LOC = P124;
+NET "d4"	LOC = P121;
+NET "d5"	LOC = P115;
+NET "d6"	LOC = P112;
+NET "d7"	LOC = P105;

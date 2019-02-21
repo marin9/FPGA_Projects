@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/home/ise/Desktop/COMP/comp.ncd
+OUTFILE=/home/ise/Desktop/COMP/comp.bit
+FAMILY=Spartan6
+PART=xc6slx9-3tqg144
+WORKINGDIR=/home/ise/Desktop/COMP
+LICENSE=WebPack
+USER_INFO=211359973_0_0_213
