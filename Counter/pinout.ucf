@@ -1,0 +1,3 @@
+NET "clk"		LOC = P50;
+NET "rst"		LOC = P131 | PULLDOWN;
+NET "led1"		LOC = P117;

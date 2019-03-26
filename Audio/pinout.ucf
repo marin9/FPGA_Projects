@@ -1,0 +1,16 @@
+NET "clk"	LOC = P50;
+NET "rst"	LOC = P139;
+NET "pause"	LOC = P131;
+NET "wr"		LOC = P141;
+NET "full"	LOC = P143;
+
+NET "output"	LOC = P126;
+
+NET "input[7]"	LOC = P8;
+NET "input[6]"	LOC = P10;
+NET "input[5]"	LOC = P12;
+NET "input[4]"	LOC = P15;
+NET "input[3]"	LOC = P17;
+NET "input[2]"	LOC = P22;
+NET "input[1]"	LOC = P24;
+NET "input[0]"	LOC = P27;

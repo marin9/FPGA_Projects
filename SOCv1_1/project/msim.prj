@@ -1,8 +1,0 @@
-vhdl work "instr.vhd"
-vhdl work "reg.vhd"
-vhdl work "alu.vhd"
-vhdl work "dec.vhd"
-vhdl work "pc.vhd"
-vhdl work "cpu.vhd"
-vhdl work "netgen/par/cpu_timesim.vhd"
-vhdl work "test_cpu.vhd"

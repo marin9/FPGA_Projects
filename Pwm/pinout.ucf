@@ -1,0 +1,5 @@
+NET "clk"		LOC = P50;
+NET "rst"		LOC = P139 | PULLDOWN;
+NET "minus"		LOC = P131;
+NET "plus"		LOC = P132;
+NET "led"		LOC = P138;

@@ -1,7 +1,0 @@
-work	"alu.vhd"
-work	"cpu.vhd"
-work	"dec.vhd"
-work	"instructions.vhd"
-work	"ireg.vhd"
-work	"reg.vhd"
-work	"stack.vhd"

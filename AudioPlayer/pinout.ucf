@@ -1,0 +1,9 @@
+NET "clk"	LOC = P50;
+NET "rst"	LOC = P132;
+NET "pause"	LOC = P131;
+NET "aout"	LOC = P112;
+
+NET "ss"		LOC = P38;
+NET "sc"		LOC = P70;
+NET "so"		LOC = P64;
+NET "si"		LOC = P65;

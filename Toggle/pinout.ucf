@@ -1,0 +1,4 @@
+NET "clk"		LOC = P50;
+NET "rst"		LOC = P132;
+NET "input"		LOC = P131;
+NET "output"	LOC = P138;
