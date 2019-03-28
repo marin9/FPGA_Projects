@@ -1,0 +1,20 @@
+NET "clk"	LOC = P50;
+
+NET "rst"	LOC = P139 | PULLDOWN;
+NET "btn1"	LOC = P131 | PULLDOWN;
+NET "btn2"	LOC = P132 | PULLDOWN;
+NET "input[3]"	LOC = P33 | PULLDOWN;
+NET "input[2]"	LOC = P35 | PULLDOWN;
+NET "input[1]"	LOC = P41 | PULLDOWN;
+NET "input[0]"	LOC = P44 | PULLDOWN;
+
+NET "rdy"				LOC = P141;
+NET "err"				LOC = P142;
+NET "remainder[3]"	LOC = P138;
+NET "remainder[2]"	LOC = P137;
+NET "remainder[1]"	LOC = P134;
+NET "remainder[0]"	LOC = P133;
+NET "result[3]"		LOC = P120;
+NET "result[2]"		LOC = P119;
+NET "result[1]"		LOC = P118;
+NET "result[0]"		LOC = P117;
