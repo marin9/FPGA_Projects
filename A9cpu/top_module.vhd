@@ -5,7 +5,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity top_module is
 port(	clk: in std_logic;
 			rst: in std_logic;
-			addr: out std_logic_vector(15 downto 0);
 			leds: out std_logic_vector(15 downto 0));
 end top_module;
 
@@ -50,13 +49,14 @@ begin
 	process(clk2) is
 	begin
 		if(falling_edge(clk2)) then
-			leds <= dout;
+			if(adr=x"FFFF") then
+				leds <= dout;
+			end if;
 		end if;
 	end process;
 
 	processor: a9cpu port map(clk4, rst, wr, adr, din, dout);
 	memory: ram port map(clk2, wr, adr(14 downto 0), dout, din);
-	addr <= adr;
 	
 end Behavioral;
 

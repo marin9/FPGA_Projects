@@ -12,7 +12,6 @@ ARCHITECTURE behavior OF test IS
     PORT(
          clk : IN  std_logic;
          rst : IN  std_logic;
-         addr : OUT  std_logic_vector(15 downto 0);
          leds : OUT  std_logic_vector(15 downto 0)
         );
     END COMPONENT;
@@ -23,7 +22,6 @@ ARCHITECTURE behavior OF test IS
    signal rst : std_logic := '0';
 
  	--Outputs
-   signal addr : std_logic_vector(15 downto 0);
    signal leds : std_logic_vector(15 downto 0);
 
    -- Clock period definitions
@@ -35,7 +33,6 @@ BEGIN
    uut: top_module PORT MAP (
           clk => clk,
           rst => rst,
-          addr => addr,
           leds => leds
         );
 
