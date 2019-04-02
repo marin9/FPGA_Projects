@@ -28,7 +28,8 @@ architecture Behavioral of top_module is
 			dout: out std_logic_vector(DATALEN-1 downto 0));
 	end component;
 
-	signal clk2, clk4, wr: std_logic;
+	signal wr: std_logic;
+	signal clk2, clk4: std_logic := '0';
 	signal adr, din, dout: std_logic_vector(15 downto 0);
 begin
 
@@ -43,6 +44,13 @@ begin
 	begin
 		if(falling_edge(clk2)) then
 			clk4 <= not clk4;
+		end if;
+	end process;
+	
+	process(clk2) is
+	begin
+		if(falling_edge(clk2)) then
+			leds <= dout;
 		end if;
 	end process;
 
