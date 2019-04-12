@@ -1,0 +1,26 @@
+jeq 6
+set 0     ;(1) var = 0
+set 0     ;(2) const = 0
+set 1     ;(3) const = 1
+set 65531 ;(4) const = -5
+set 65535 ;(5) const = 0xffff
+
+	; .org 6
+lda 1
+add 3
+sta 1
+sti 5
+jsr 13
+lda 2
+jeq 6
+
+	; .org 13
+add 4
+jeq 16
+ret
+
+	; .org 16
+lda 2
+sta 1
+ret
+

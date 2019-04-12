@@ -1,0 +1,20 @@
+NET "clk"	LOC = P50;
+NET "rst"	LOC = P131 | PULLDOWN;
+
+NET "leds[15]"	LOC = P22;
+NET "leds[14]"	LOC = P24;
+NET "leds[13]"	LOC = P27;
+NET "leds[12]"	LOC = P30;
+NET "leds[11]"	LOC = P33;
+NET "leds[10]"	LOC = P35;
+NET "leds[9]"		LOC = P41;
+NET "leds[8]"		LOC = P44;
+
+NET "leds[7]"		LOC = P138;
+NET "leds[6]"		LOC = P137;
+NET "leds[5]"		LOC = P134;
+NET "leds[4]"		LOC = P133;
+NET "leds[3]"		LOC = P120;
+NET "leds[2]"		LOC = P119;
+NET "leds[1]"		LOC = P118;
+NET "leds[0]"		LOC = P117;

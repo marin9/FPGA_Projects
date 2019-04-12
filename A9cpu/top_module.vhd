@@ -1,7 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-
 entity top_module is
 port(	clk: in std_logic;
 			rst: in std_logic;
@@ -32,24 +31,26 @@ architecture Behavioral of top_module is
 	signal adr, din, dout: std_logic_vector(15 downto 0);
 begin
 
-	process(clk) is
+	clk_25MHz: process(clk) is
 	begin
 		if(falling_edge(clk)) then
 			clk2 <= not clk2;
 		end if;
 	end process;
 	
-	process(clk2) is
+	clk_12_5MHz: process(clk2) is
 	begin
 		if(falling_edge(clk2)) then
 			clk4 <= not clk4;
 		end if;
 	end process;
 	
-	process(clk2) is
+	led_reg: process(clk4) is
 	begin
-		if(falling_edge(clk2)) then
-			if(adr=x"FFFF") then
+		if(falling_edge(clk4)) then
+			if(rst='1') then
+				leds <= (others => '0');
+			elsif(adr=x"FFFF") then
 				leds <= dout;
 			end if;
 		end if;

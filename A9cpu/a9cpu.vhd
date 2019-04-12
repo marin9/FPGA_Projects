@@ -70,7 +70,7 @@ begin
 				end if;
 				n_st <= FETCH;
 			when "0011" => --jsr
-				adr <= "1111" & sp;
+				adr <= "0111" & sp;
 				wr <= '1';
 				dout <= "0000" & pc;
 				n_sp <= sp - 1;
@@ -87,7 +87,7 @@ begin
 		WHEN EXECUTE2 =>
 			case opcode is
 			when "0100" => --ret
-				adr <= "1111" & sp;
+				adr <= "0111" & sp;
 				n_pc <= din(11 downto 0);
 			when "0101" => --ldi
 				adr <= dr;

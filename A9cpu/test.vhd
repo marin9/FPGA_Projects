@@ -52,6 +52,7 @@ BEGIN
       rst <= '1';
       wait for 100*4 ns;	
 			rst <= '0';
+			
       wait;
    end process;
 

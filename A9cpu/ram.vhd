@@ -33,7 +33,7 @@ architecture Behavioral of ram is
 		end loop;
 		return rom;
 	end function;
-	signal ram: memory := read_program("prog.txt");
+	signal ram: memory := read_program("prog/prog.txt");
 begin
 
 	process(clk) is
