@@ -87,12 +87,7 @@ void skipComment(){
 }
 
 int getLabelValue(char *label){
-
-
-	//TODO labels
-
-
-
+	error("Labels not implemented."); //TODO
 	return label[0];
 }
 
